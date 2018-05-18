@@ -14,4 +14,4 @@ This script has two functions:
 This script should only be used on servers that you own or have explicit permission to do so.
 
 ## Contribution guidelines
-  * Open an issue and we will get to it as quickly as we can. If you have a ton of additions please reach out to us and we can work together on getting it completed.
+Open an issue and we will get to it as quickly as we can. If you have a ton of additions please reach out to us and we can work together on getting it completed.
