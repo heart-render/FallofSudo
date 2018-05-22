@@ -327,6 +327,13 @@ def sudofile():
     f = open(fname, "w+")
 
     # run the sudo -ll command
+    # Update suggested by jesmith
+    while True:
+        try:
+            sudoll = subprocess.check_output(['sudo' , '-ll'])
+        except Exception as check_output_err:
+            sys.exit(1)
+
     sudoll = subprocess.check_output(['sudo' , '-ll'])
 
     # Saving sudoll output to file
