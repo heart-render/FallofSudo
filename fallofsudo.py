@@ -328,11 +328,11 @@ def sudofile():
 
     # run the sudo -ll command
     # Update suggested by jesmith
-    while True:
-        try:
-            sudoll = subprocess.check_output(['sudo' , '-ll'])
-        except Exception as check_output_err:
-            sys.exit(1)
+    try:
+	sudoll = subprocess.check_output(['sudo' , '-ll'])
+    except subprocess.CalledProcessError as e:
+        print e.output
+	sys.exit(1)
 
     sudoll = subprocess.check_output(['sudo' , '-ll'])
 
@@ -374,7 +374,8 @@ def sudoparse():
     print OKGREEN + "[!] " + username + " has the following sudo rules:" + ENDC
     for item in sudooutput:
         print OKGREEN + "\n[!] RunAsUsers: " + ENDC + item[0]
-        print OKGREEN + "[!] RunAsGroups: " + ENDC + item[1]
+        if item[1] != None:
+	    print OKGREEN + "[!] RunAsGroups: " + ENDC + item[1]
         if item[2] != None:
             print OKGREEN + "[!] Options: " + ENDC + item[2]
         print OKGREEN + "[!] Commands: " + ENDC + item[3]
