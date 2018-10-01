@@ -9,7 +9,7 @@
 # Usage Example: python fallofsudo.py
 # Description: This script obtains users Sudo rules and provides ways to abuse them. 
 #
-# STATUS: 41 SUDO RULES
+# STATUS: 42 SUDO RULES
 ###############################################################################################################
 
 import getpass
