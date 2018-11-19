@@ -8,7 +8,7 @@ Welcome to the FallofSudo project! This has been developed to aid in the exploit
 ## Usage
 This script has two functions:
   * Informational: By passing the ```-i``` command argument the program will show you how to exploit the specific sudo rule you are facing. This is the safest and most preferred way to use this script.
-  * Autopwn: By passing the ```-a``` command argument the program will auto exploit the specific sudo rule you are facing. By careful using this argument and ensure you know what you are doing!
+  * Autopwn: By passing the ```-a``` command argument the program will auto exploit the specific sudo rule you are facing. Be careful using this argument and ensure you know what you are doing!
 
 ## Disclaimer
 This script should only be used on servers that you own or have explicit permission to do so.
