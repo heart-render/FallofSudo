@@ -75,7 +75,7 @@ if not os.path.exists(directory):
 def main():
     print OKRED + banner + ENDC
     print OKGREEN + "Author: " + ENDC + "paragonsec @ Critical Start (https://www.criticalstart.com)"
-    print OKGREEN + "Contributor: " + ENDC + "rmirch"
+    print OKGREEN + "Contributors: " + ENDC + "rmirch, roman-mueller, caryhooper"
     print OKGREEN + "Version: " + ENDC + "1.1"
     print OKGREEN + "Description: " + ENDC + "This program aids pentesters in conducting privilege escalation on Linux by abusing sudo. Use for good or training purposes ONLY!\n"
     sudopwner()
